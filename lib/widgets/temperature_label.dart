@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_weather_app/util/global_util.dart';
 
 class TemperatureLabelWidget extends StatefulWidget {
-  final int temperature;
+  final double temperature;
   const TemperatureLabelWidget({super.key, required this.temperature});
 
   @override
@@ -14,9 +15,9 @@ class _TemperatureLabelWidgetState extends State<TemperatureLabelWidget> {
     return Center(
       child: Column(
         children: [
-          Text('${widget.temperature.toString()} °C ',
+          Text('${fahreheitToCelsius(widget.temperature)} °C ',
               style: const TextStyle(fontSize: 45)),
-          Text('feels like ${widget.temperature.toString()} °C ',
+          Text('feels like ${fahreheitToCelsius(widget.temperature)} °C ',
               style: const TextStyle(fontSize: 20))
         ],
       ),

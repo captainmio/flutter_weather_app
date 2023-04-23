@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:weather_icons/weather_icons.dart';
+import 'package:flutter_weather_app/util/global_util.dart';
 
 class PerDayWeatherWidget extends StatefulWidget {
   final String day;
-  final int temperature;
+  final double temperature;
   final Icon weatherIcon;
   const PerDayWeatherWidget(
       {super.key,
@@ -21,7 +21,11 @@ class _PerDayWeatherWidgetState extends State<PerDayWeatherWidget> {
     return Row(
       children: [
         Column(
-          children: [Text(widget.day), Text('${widget.temperature} °C')],
+          children: [
+            Text(widget.day),
+            // Text('${fahreheitToCelsius(widget.temperature)} °C')
+            Text('${(widget.temperature)} °C')
+          ],
         ),
         const SizedBox(width: 10),
         widget.weatherIcon
