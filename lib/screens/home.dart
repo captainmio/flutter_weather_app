@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_weather_app/models/location.dart';
+import 'package:flutter_weather_app/services/weather_service.dart';
 import 'package:flutter_weather_app/store/weather_model.dart';
 import 'package:flutter_weather_app/widgets/city_label.dart';
 import 'package:flutter_weather_app/widgets/per_day_weather.dart';
 import 'package:flutter_weather_app/widgets/search_bar.dart';
 import 'package:flutter_weather_app/widgets/temperature_label.dart';
-
 import 'package:flutter_weather_app/util/global_util.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:provider/provider.dart';
 import 'package:intl/intl.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter_async_autocomplete/flutter_async_autocomplete.dart';
+import 'dart:async';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -23,14 +26,15 @@ class _HomeScreenState extends State<HomeScreen> {
   late Icon weatherIcon;
 
   late String search = 'Manila';
-  final String locationKey = '264885';
+  late String locationKey = '264885';
+  Timer? _debounce;
 
-  void _onSearch(String value) {
-    debugPrint(value);
-
+  Future _onSearch(String value, weatherModel) async {
     setState(() {
       search = value;
     });
+    await Provider.of<WeatherModel>(context, listen: false)
+        .searchLocationData(search);
   }
 
   @override
@@ -38,6 +42,10 @@ class _HomeScreenState extends State<HomeScreen> {
     // TODO: implement initState
     super.initState();
 
+    onFetchWeatherForecast();
+  }
+
+  void onFetchWeatherForecast() {
     Provider.of<WeatherModel>(context, listen: false)
         .getWeatherData(locationKey);
   }
@@ -67,12 +75,29 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     final weatherModel = Provider.of<WeatherModel>(context);
+    var searchController = TextEditingController();
 
     return Scaffold(
       appBar: AppBar(
         elevation: 0.0,
         backgroundColor: Colors.transparent,
-        title: SearchBarWidget(onSearch: _onSearch),
+        // title: SearchBarWidget(onSearch: _onSearch),
+        title: AsyncAutocomplete<Location>(
+          controller: searchController,
+          onTapItem: (Location location) {
+            setState(() {
+              locationKey = location.code;
+            });
+            onFetchWeatherForecast();
+          },
+          asyncSuggestions: (searchValue) async {
+            return _onSearch(searchValue, weatherModel)
+                .then((value) => weatherModel.locations!);
+          },
+          suggestionBuilder: (data) => ListTile(
+            title: Text(data.name),
+          ),
+        ),
       ),
       body: !weatherModel.loading
           ? SingleChildScrollView(

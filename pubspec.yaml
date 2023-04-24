@@ -41,6 +41,8 @@ dependencies:
   flutter_spinkit:
   intl: ^0.18.1
   url_launcher: ^6.1.10
+  weather_animation: ^0.0.2
+  flutter_async_autocomplete: ^0.0.1
 
 dev_dependencies:
   flutter_test:

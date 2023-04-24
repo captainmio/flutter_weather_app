@@ -62,6 +62,14 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_async_autocomplete:
+    dependency: "direct main"
+    description:
+      name: flutter_async_autocomplete
+      sha256: "751645700fe0a569a0dbf5f30cafe9eb695bc83e6a39a590095385eb51787d87"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.4"
   flutter_lints:
     dependency: "direct dev"
     description:
@@ -88,6 +96,14 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  freezed_annotation:
+    dependency: transitive
+    description:
+      name: freezed_annotation
+      sha256: aeac15850ef1b38ee368d4c53ba9a847e900bb2c53a4db3f6881cbb3cb684338
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.2.0"
   http:
     dependency: "direct main"
     description:
@@ -120,6 +136,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.6.5"
+  json_annotation:
+    dependency: transitive
+    description:
+      name: json_annotation
+      sha256: c33da08e136c3df0190bd5bbe51ae1df4a7d96e7954d1d7249fea2968a72d317
+      url: "https://pub.dev"
+    source: hosted
+    version: "4.8.0"
   lints:
     dependency: transitive
     description:
@@ -317,6 +341,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.4"
+  weather_animation:
+    dependency: "direct main"
+    description:
+      name: weather_animation
+      sha256: "37cfdcdd919b11b1ea7eefa08a8480d06b85eb4f5470380589150e8e457f2497"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.2"
   weather_icons:
     dependency: "direct main"
     description:

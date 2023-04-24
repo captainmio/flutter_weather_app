@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:async';
 
 class SearchBarWidget extends StatefulWidget {
   final Function onSearch;
@@ -10,6 +11,8 @@ class SearchBarWidget extends StatefulWidget {
 }
 
 class _SearchBarWidgetState extends State<SearchBarWidget> {
+  Timer? _debounce;
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -24,7 +27,10 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
       child: Center(
         child: TextField(
           onChanged: (text) {
-            widget.onSearch(text);
+            if (_debounce?.isActive ?? false) _debounce!.cancel();
+            _debounce = Timer(const Duration(milliseconds: 300), () {
+              widget.onSearch(text);
+            });
           },
           decoration: const InputDecoration(
               prefixIcon: Icon(
