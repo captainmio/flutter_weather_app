@@ -16,9 +16,9 @@ class _TemperatureLabelWidgetState extends State<TemperatureLabelWidget> {
       child: Column(
         children: [
           Text('${fahreheitToCelsius(widget.temperature)} °C ',
-              style: const TextStyle(fontSize: 45)),
+              style: const TextStyle(fontSize: 45, color: Colors.white)),
           Text('feels like ${fahreheitToCelsius(widget.temperature)} °C ',
-              style: const TextStyle(fontSize: 20))
+              style: const TextStyle(fontSize: 20, color: Colors.white))
         ],
       ),
     );

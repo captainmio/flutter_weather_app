@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_weather_app/models/location.dart';
 import 'package:flutter_weather_app/models/weather.dart';
@@ -7,20 +9,24 @@ class WeatherModel extends ChangeNotifier {
   Weather? weather;
   List<Location>? locations;
   bool loading = true;
+  String locationKey = '264885';
+  String locationName = 'Manila';
 
-  getWeatherData(String locationkey) async {
+  getWeatherData() async {
     loading = true;
-    weather = await getWeather(locationkey);
+    weather = await getWeather(locationKey);
     loading = false;
     notifyListeners();
   }
 
   searchLocationData(String search) async {
-    // loading = true;
     locations = await searchLocation(search);
-    locations!.map((e) => print(e.name));
+    notifyListeners();
+  }
 
-    // loading = false;
+  updatelocationKeyAndLocationName(String name, String key) {
+    locationName = name;
+    locationKey = key;
     notifyListeners();
   }
 }

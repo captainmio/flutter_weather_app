@@ -22,9 +22,14 @@ class _PerDayWeatherWidgetState extends State<PerDayWeatherWidget> {
       children: [
         Column(
           children: [
-            Text(widget.day),
-            // Text('${fahreheitToCelsius(widget.temperature)} °C')
-            Text('${(widget.temperature)} °C')
+            Text(
+              widget.day,
+              style: const TextStyle(color: Colors.white, fontSize: 18),
+            ),
+            Text(
+              '${fahreheitToCelsius(widget.temperature)} °C',
+              style: const TextStyle(color: Colors.white, fontSize: 18),
+            )
           ],
         ),
         const SizedBox(width: 10),

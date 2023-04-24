@@ -16,7 +16,11 @@ class _CityLabelWidgetState extends State<CityLabelWidget> {
   Widget build(BuildContext context) {
     return Text(
       widget.cityName,
-      style: TextStyle(color: Colors.black, fontSize: widget.fontSize),
+      style: TextStyle(
+        color: Colors.white,
+        fontSize: widget.fontSize,
+      ),
+      textAlign: TextAlign.center,
     );
   }
 }
