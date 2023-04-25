@@ -1,16 +1,14 @@
 # flutter_weather_app
 
-A new Flutter project.
+A Weather app I created using Flutter
 
-## Getting Started
+## Things to take note
 
-This project is a starting point for a Flutter application.
++ Make sure you properly install flutter to you device, please see [flutter documentation](https://docs.flutter.dev/get-started/install) on how to install flutter in different OS devices(Windows, Mac, Linux)
++ run `flutter doctor -v` and make sure all of the requirements are **checked**
++ for you to change the Accuweather API key, please change `\lib\constants\globals.dart` **apikey** variable's value
++ to run the app please use the command `flutter run`, make sure that your Emulator is already open so flutter will automatically select the emulator once you the command
++ to check test, run the command `flutter test`, it should not have any error
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Improvements
+**Geolocation**, maybe in the future as I am planning to add this assessment as my portfolio project
