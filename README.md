@@ -15,4 +15,4 @@ A Weather app I created using Flutter
 
 
 # Demo
-![alt text](https://im.ge/i/L8HZY8)
+![Flutter Weather APp](https://i.im.ge/2023/04/25/L8HZY8.FlutterWeatherApp.gif)
