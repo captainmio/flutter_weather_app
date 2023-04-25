@@ -6,7 +6,7 @@ String fahreheitToCelsius(double fahrenheitValue) {
 }
 
 Icon displayWeatherIcon(String weather, {double size = 0}) {
-  late Icon returnIcon;
+  late IconData returnIcon;
   double iconSize = 70.0;
 
   if (size > 0) {
@@ -15,180 +15,85 @@ Icon displayWeatherIcon(String weather, {double size = 0}) {
 
   switch (weather.toLowerCase()) {
     case 'sunny':
-      returnIcon = Icon(
-        WeatherIcons.day_sunny,
-        size: iconSize,
-        color: Colors.white,
-      );
+      returnIcon = WeatherIcons.day_sunny;
       break;
     case 'mostly sunny':
-      returnIcon = Icon(
-        WeatherIcons.day_sunny,
-        size: iconSize,
-        color: Colors.white,
-      );
+      returnIcon = WeatherIcons.day_sunny;
       break;
     case 'partly sunny':
-      returnIcon = Icon(
-        WeatherIcons.day_sunny,
-        size: iconSize,
-        color: Colors.white,
-      );
+      returnIcon = WeatherIcons.day_sunny;
       break;
     case 'intermittent clouds':
-      returnIcon = Icon(
-        WeatherIcons.day_sunny_overcast,
-        size: iconSize,
-        color: Colors.white,
-      );
+      returnIcon = WeatherIcons.day_sunny_overcast;
       break;
     case 'hazy sunshine':
-      returnIcon = Icon(
-        WeatherIcons.day_fog,
-        size: iconSize,
-        color: Colors.white,
-      );
+      returnIcon = WeatherIcons.day_fog;
       break;
     case 'mostly cloudy':
-      returnIcon = Icon(
-        WeatherIcons.day_sunny_overcast,
-        size: iconSize,
-        color: Colors.white,
-      );
+      returnIcon = WeatherIcons.day_sunny_overcast;
       break;
     case 'cloudy':
-      returnIcon = Icon(
-        WeatherIcons.cloudy,
-        size: iconSize,
-        color: Colors.white,
-      );
+      returnIcon = WeatherIcons.cloudy;
       break;
     case 'dreary (Overcast)':
-      returnIcon = Icon(
-        WeatherIcons.fog,
-        size: iconSize,
-        color: Colors.white,
-      );
+      returnIcon = WeatherIcons.fog;
       break;
     case 'fog':
-      returnIcon = Icon(
-        WeatherIcons.fog,
-        size: iconSize,
-        color: Colors.white,
-      );
+      returnIcon = WeatherIcons.fog;
       break;
     case 'showers':
-      returnIcon = Icon(
-        WeatherIcons.fog,
-        size: iconSize,
-        color: Colors.white,
-      );
+      returnIcon = WeatherIcons.fog;
       break;
     case 'mostly cloudy w/ showers':
-      returnIcon = Icon(
-        WeatherIcons.day_showers,
-        size: iconSize,
-        color: Colors.white,
-      );
+      returnIcon = WeatherIcons.day_showers;
       break;
     case 'partly sunny w/ showers':
-      returnIcon = Icon(
-        WeatherIcons.day_sleet,
-        size: iconSize,
-        color: Colors.white,
-      );
+      returnIcon = WeatherIcons.day_sleet;
       break;
     case 't-storms':
-      returnIcon = Icon(
-        WeatherIcons.thunderstorm,
-        size: iconSize,
-        color: Colors.white,
-      );
+      returnIcon = WeatherIcons.thunderstorm;
       break;
     case 'mostly cloudy w/ t-storms':
-      returnIcon = Icon(
-        WeatherIcons.day_thunderstorm,
-        size: iconSize,
-        color: Colors.white,
-      );
+      returnIcon = WeatherIcons.day_thunderstorm;
       break;
     case 'partly sunny w/ t-storms':
-      returnIcon = Icon(
-        WeatherIcons.day_sleet_storm,
-        size: iconSize,
-        color: Colors.white,
-      );
+      returnIcon = WeatherIcons.day_sleet_storm;
       break;
     case 'rain':
-      returnIcon = Icon(
-        WeatherIcons.rain,
-        size: iconSize,
-        color: Colors.white,
-      );
+      returnIcon = WeatherIcons.rain;
       break;
     case 'flurries':
-      returnIcon = Icon(
-        WeatherIcons.rain_mix,
-        size: iconSize,
-        color: Colors.white,
-      );
+      returnIcon = WeatherIcons.rain_mix;
       break;
     case 'mostly cloudy w/ flurries':
-      returnIcon = Icon(
-        WeatherIcons.day_rain,
-        size: iconSize,
-        color: Colors.white,
-      );
+      returnIcon = WeatherIcons.day_rain;
       break;
     case 'partly cloudy w/ flurries':
-      returnIcon = Icon(
-        WeatherIcons.day_rain_wind,
-        size: iconSize,
-        color: Colors.white,
-      );
+      returnIcon = WeatherIcons.day_rain_wind;
       break;
     case 'windy':
-      returnIcon = Icon(
-        WeatherIcons.day_showers,
-        size: iconSize,
-        color: Colors.white,
-      );
+      returnIcon = WeatherIcons.day_showers;
       break;
     case 'snow':
-      returnIcon = Icon(
-        WeatherIcons.showers,
-        size: iconSize,
-        color: Colors.white,
-      );
+      returnIcon = WeatherIcons.showers;
       break;
     case 'mostly cloudy w/ snow':
-      returnIcon = Icon(
-        WeatherIcons.day_snow_wind,
-        size: iconSize,
-        color: Colors.white,
-      );
+      returnIcon = WeatherIcons.day_snow_wind;
       break;
     case 'ice':
-      returnIcon = Icon(
-        WeatherIcons.snowflake_cold,
-        size: iconSize,
-        color: Colors.white,
-      );
+      returnIcon = WeatherIcons.snowflake_cold;
       break;
     case 'thunderstorm':
-      returnIcon = Icon(
-        WeatherIcons.thunderstorm,
-        size: iconSize,
-        color: Colors.white,
-      );
+      returnIcon = WeatherIcons.thunderstorm;
       break;
     default:
-      returnIcon = Icon(
-        WeatherIcons.na,
-        size: iconSize,
-        color: Colors.white,
-      );
+      returnIcon = WeatherIcons.na;
       break;
   }
-  return returnIcon;
+
+  return Icon(
+    returnIcon,
+    size: iconSize,
+    color: Colors.white,
+  );
 }

@@ -11,7 +11,6 @@ import 'package:intl/intl.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_async_autocomplete/flutter_async_autocomplete.dart';
 import 'package:basic_utils/basic_utils.dart';
-import 'package:weather_animation/weather_animation.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -31,7 +30,6 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
 
     onFetchWeatherForecast();
@@ -172,46 +170,63 @@ class _HomeScreenState extends State<HomeScreen> {
                           Expanded(
                             child: Container(),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: getFutureForecast(weatherModel),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(top: 20),
-                            child: ElevatedButton(
-                              style: ButtonStyle(
-                                backgroundColor:
-                                    const MaterialStatePropertyAll<Color>(
-                                        Colors.white60),
-                                shape: MaterialStateProperty.all(
-                                  RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(30.0),
-                                    side: const BorderSide(
-                                        width: 1, color: Colors.black),
+                          Container(
+                            decoration: const BoxDecoration(
+                              color: Colors.black54,
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(15)),
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.all(10.0),
+                              child: Column(
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: getFutureForecast(weatherModel),
                                   ),
-                                ),
-                              ),
-                              child: Wrap(
-                                crossAxisAlignment: WrapCrossAlignment.center,
-                                children: const [
-                                  Icon(
-                                    Icons.alarm,
-                                    color: Colors.black,
-                                  ),
-                                  SizedBox(
-                                    width: 5,
-                                  ),
-                                  Text(
-                                    '5-day Forecast',
-                                    style: TextStyle(
-                                        fontSize: 20.0, color: Colors.black),
+                                  Padding(
+                                    padding: const EdgeInsets.only(top: 20),
+                                    child: ElevatedButton(
+                                      style: ButtonStyle(
+                                        backgroundColor:
+                                            const MaterialStatePropertyAll<
+                                                Color>(Colors.white),
+                                        shape: MaterialStateProperty.all(
+                                          RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(30.0),
+                                            side: const BorderSide(
+                                                width: 1, color: Colors.black),
+                                          ),
+                                        ),
+                                      ),
+                                      child: Wrap(
+                                        crossAxisAlignment:
+                                            WrapCrossAlignment.center,
+                                        children: const [
+                                          Icon(
+                                            Icons.alarm,
+                                            color: Colors.black,
+                                          ),
+                                          SizedBox(
+                                            width: 5,
+                                          ),
+                                          Text(
+                                            '5-day Forecast',
+                                            style: TextStyle(
+                                                fontSize: 20.0,
+                                                color: Colors.black),
+                                          )
+                                        ],
+                                      ),
+                                      onPressed: () async {
+                                        await launchUrl(Uri.parse(weatherModel
+                                            .weather!.headline.link));
+                                      },
+                                    ),
                                   )
                                 ],
                               ),
-                              onPressed: () async {
-                                await launchUrl(Uri.parse(
-                                    weatherModel.weather!.headline.link));
-                              },
                             ),
                           )
                         ],

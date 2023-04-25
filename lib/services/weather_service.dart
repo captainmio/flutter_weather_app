@@ -7,12 +7,12 @@ import 'package:flutter_weather_app/models/weather.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter_weather_app/constants/globals.dart' as globals;
 
-Future getWeather(String locationKey) async {
+Future<Weather?> getWeather(String locationKey) async {
   Weather? result;
   try {
     final response = await http.get(
       Uri.parse(
-          "${globals.baseURL}/forecasts/v1/daily/5day/${locationKey}?apikey=${globals.apiKey}&details=true"),
+          "${globals.baseURL}/forecasts/v1/daily/5day/$locationKey?apikey=${globals.apiKey}&details=true"),
       headers: {
         HttpHeaders.contentTypeHeader: globals.contentTypeHeader,
       },
@@ -28,7 +28,7 @@ Future getWeather(String locationKey) async {
   return result;
 }
 
-Future searchLocation(String search) async {
+Future<List<Location>?> searchLocation(String search) async {
   List<Location> result = [];
 
   try {

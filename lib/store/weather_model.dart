@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_weather_app/models/location.dart';
 import 'package:flutter_weather_app/models/weather.dart';
@@ -10,7 +8,7 @@ class WeatherModel extends ChangeNotifier {
   List<Location>? locations;
   bool loading = true;
   String locationKey = '264885';
-  String locationName = 'Manila';
+  String locationName = 'Manila, Philippines';
 
   getWeatherData() async {
     loading = true;

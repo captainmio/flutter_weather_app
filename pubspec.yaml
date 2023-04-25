@@ -44,6 +44,7 @@ dependencies:
   weather_animation: ^0.0.2
   flutter_async_autocomplete: ^0.0.1
   basic_utils: ^5.5.4
+  mockito: ^5.4.0
 
 dev_dependencies:
   flutter_test:
