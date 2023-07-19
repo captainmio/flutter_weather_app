@@ -148,12 +148,8 @@ class _HomeScreenState extends State<HomeScreen> {
                               Padding(
                                 padding: const EdgeInsets.only(top: 30),
                                 child: TemperatureLabelWidget(
-                                    temperature: weatherModel
-                                        .weather!
-                                        .dailyForecasts[0]
-                                        .temperature
-                                        .maximum
-                                        .value),
+                                    today: weatherModel
+                                        .weather!.dailyForecasts[0]),
                               ),
                               displayWeatherIcon(
                                   weatherModel.weather!.headline.category),
