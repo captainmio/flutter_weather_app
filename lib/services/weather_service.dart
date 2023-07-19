@@ -6,13 +6,44 @@ import 'package:flutter_weather_app/models/location.dart';
 import 'package:flutter_weather_app/models/weather.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter_weather_app/constants/globals.dart' as globals;
+import 'package:geolocator/geolocator.dart';
+import 'package:geocode/geocode.dart';
+
+Future<Position> determinePosition() async {
+  bool serviceEnabled;
+  LocationPermission permission;
+
+  serviceEnabled = await Geolocator.isLocationServiceEnabled();
+  if (!serviceEnabled) {
+    return Future.error('Location services are disabled.');
+  }
+
+  permission = await Geolocator.checkPermission();
+  if (permission == LocationPermission.denied) {
+    permission = await Geolocator.requestPermission();
+    if (permission == LocationPermission.denied) {
+      return Future.error('Location permissions are denied');
+    }
+  }
+
+  permission = await Geolocator.checkPermission();
+
+  return await Geolocator.getCurrentPosition();
+}
+
+Future<Address> reverseGeocoding(double latitude, double longitude) async {
+  GeoCode geoCode = GeoCode(apiKey: globals.geoCodeApiKey);
+
+  return await geoCode.reverseGeocoding(
+      latitude: latitude, longitude: longitude);
+}
 
 Future<Weather?> getWeather(String locationKey) async {
   Weather? result;
   try {
     final response = await http.get(
       Uri.parse(
-          "${globals.baseURL}/forecasts/v1/daily/5day/$locationKey?apikey=${globals.apiKey}&details=true"),
+          "${globals.baseURL}/forecasts/v1/daily/5day/$locationKey?apikey=${globals.apiKey}&details=true&timezone=PST"),
       headers: {
         HttpHeaders.contentTypeHeader: globals.contentTypeHeader,
       },

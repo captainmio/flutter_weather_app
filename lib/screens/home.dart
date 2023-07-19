@@ -32,7 +32,13 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     super.initState();
 
-    onFetchWeatherForecast();
+    _getCurrentLocation().then((_) => onFetchWeatherForecast());
+    // onFetchWeatherForecast();
+  }
+
+  _getCurrentLocation() {
+    return Provider.of<WeatherModel>(context, listen: false)
+        .getCurrentLocation();
   }
 
   void onFetchWeatherForecast() {
@@ -235,7 +241,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
               )
-            : const SpinKitSpinningLines(
+            : const SpinKitSquareCircle(
                 color: Colors.white,
                 size: 50.0,
               ),
