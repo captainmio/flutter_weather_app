@@ -9,26 +9,26 @@ import 'package:flutter_weather_app/constants/globals.dart' as globals;
 import 'package:geolocator/geolocator.dart';
 import 'package:geocode/geocode.dart';
 
-Future<Position> determinePosition() async {
+Future<bool> determinePosition() async {
   bool serviceEnabled;
   LocationPermission permission;
 
   serviceEnabled = await Geolocator.isLocationServiceEnabled();
   if (!serviceEnabled) {
-    return Future.error('Location services are disabled.');
+    return false;
   }
 
   permission = await Geolocator.checkPermission();
   if (permission == LocationPermission.denied) {
     permission = await Geolocator.requestPermission();
     if (permission == LocationPermission.denied) {
-      return Future.error('Location permissions are denied');
+      return false;
     }
   }
 
-  permission = await Geolocator.checkPermission();
+  // permission = await Geolocator.checkPermission();
 
-  return await Geolocator.getCurrentPosition();
+  return true;
 }
 
 Future<Address> reverseGeocoding(double latitude, double longitude) async {

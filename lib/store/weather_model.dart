@@ -9,6 +9,7 @@ import 'package:geocode/geocode.dart';
 class WeatherModel extends ChangeNotifier {
   Weather? weather;
   Position? position;
+  bool? checkPermission;
   Address? address;
   List<Location>? locations;
   bool loading = true;
@@ -17,9 +18,10 @@ class WeatherModel extends ChangeNotifier {
 
   getCurrentLocation() async {
     loading = true;
-    position = await determinePosition();
+    checkPermission = await determinePosition();
 
-    if (position != null) {
+    if (checkPermission != false) {
+      position = await Geolocator.getCurrentPosition();
       address = await reverseGeocoding(position!.latitude, position!.longitude);
       await searchLocationData(
           "${address!.city.toString()}, ${address!.countryName.toString()}");
