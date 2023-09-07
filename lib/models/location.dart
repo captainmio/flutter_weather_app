@@ -21,7 +21,8 @@ class Location {
 
   factory Location.fromJson(Map<String, dynamic> json) => Location(
         code: json["Key"],
-        name: '${json["LocalizedName"]}, ${json["Country"]["LocalizedName"]}',
+        name:
+            '${json["LocalizedName"]}, ${json["AdministrativeArea"]["LocalizedName"]}, ${json["Country"]["LocalizedName"]}',
       );
 
   Map<String, dynamic> toJson() => {

@@ -137,10 +137,10 @@ class _HomeScreenState extends State<HomeScreen> {
                         children: <Widget>[
                           CityLabelWidget(
                             cityName: weatherModel.locationName,
-                            fontSize: 50,
+                            fontSize: 45,
                           ),
                           const SizedBox(
-                            height: 100,
+                            height: 80,
                           ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
